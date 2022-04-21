@@ -102,3 +102,10 @@ h3 a{
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-style: oblique;
 }
+
+h1{
+    text-align: center;
+    color: #ffffff;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    padding: 20px;
+}
