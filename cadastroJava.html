@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<body>
+    <script>
+        let pacotesCadastrados = [];
+        function cadastrar(pacotes){
+            alert('Cadastro de pacotes');
+            let cidade = prompt('Nome da cidade:');
+            let duracao = prompt('Duração da viagem em dias:');
+            let preco = prompt('Preço do pacote:')
+            let pacote = {
+                cidade: cidade,
+                duracao: duracao,
+                preco: preco
+            }
+            pacotes.push(pacote);
+        }
+
+        function listar(pacotes){
+            alert('Pacotes cadastrados:')
+            let id = 0;
+            let listagem = '';
+            for (let pacote of pacotes){
+                listagem += id + '. ' + pacote.cidade + '(' + pacote.duracao + ' dias)' + ' - ' + "R$" + pacote.preco+ '\n';
+                id++;
+            }
+            alert(listagem)
+        }
+        function editar(pacotes){
+            listar(pacotes)
+            let id = parseInt(prompt("Digite o ID que você deseja editar:"))
+            let pacote = pacotes[id]
+            let cidade = prompt("Nome da cidade: ")
+            if (cidade == ''){
+                cidade = pacote.cidade;
+            }
+            let duracao = prompt("Duração da viagem: ")
+            if (duracao == ''){
+                duracao = pacote.duracao;
+            }
+            let preco = prompt("Preço do pacote: ")
+            if (preco == ''){
+                preco = pacote.preco;
+            }
+            let pacoteEditado = {
+                cidade: cidade,
+                duracao: duracao,
+                preco: preco
+            }
+            pacotes[id] = pacoteEditado
+        }
+        function excluir(pacotes){
+            listar(pacotes);
+            let id = parseInt(prompt("Digite o ID que você deseja apagar:"))
+            pacotes.splice(id, 1);
+        }
+
+        loop:
+            while (true){
+                alert("1. Cadastrar pacotes\n2. Listar pacotes\n3. Editar pacotes\n4. Apagar pacote\n5. Sair")
+                escolha = prompt('');
+                switch(escolha){
+                    case "1":
+                    cadastrar(pacotesCadastrados);  
+                    break;
+                    case "2":
+                        listar(pacotesCadastrados);
+                        break;
+                    case "3":
+                        editar(pacotesCadastrados);
+                        break;
+                    case "4":
+                        excluir(pacotesCadastrados);
+                        break;
+                    case "5":
+                        break loop;
+                }
+        }
+    </script>
+</body>
+</html>
